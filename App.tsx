@@ -1,45 +1,41 @@
 import React from 'react';
-import Hero from './components/Hero';
-import StatsBoard from './components/StatsBoard';
-import Inventory from './components/Inventory';
-import QuestLog from './components/QuestLog';
-import ProjectDeepDive from './components/ProjectDeepDive';
-import Gallery from './components/Gallery';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+// Pages
+import HomePage from './pages/HomePage';
+import ProjectsPage from './pages/ProjectsPage';
+import ResumePage from './pages/ResumePage';
+import GalleryPage from './pages/GalleryPage';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-game-dark text-slate-200 font-sans overflow-x-hidden selection:bg-game-accent selection:text-game-dark">
-      
-      {/* Decorative Background Grid */}
-      <div className="fixed inset-0 z-0 opacity-5 pointer-events-none" 
-           style={{ 
-             backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', 
-             backgroundSize: '40px 40px' 
-           }}>
-      </div>
-
-      <main className="relative z-10">
-        <Hero />
-        <StatsBoard />
+    <Router>
+      <div className="min-h-screen bg-game-dark text-slate-200 font-sans overflow-x-hidden selection:bg-game-accent selection:text-game-dark flex flex-col">
         
-        {/* Featured Project takes prominence */}
-        <div className="mt-12">
-            <ProjectDeepDive />
+        {/* Decorative Background Grid */}
+        <div className="fixed inset-0 z-0 opacity-5 pointer-events-none" 
+             style={{ 
+               backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', 
+               backgroundSize: '40px 40px' 
+             }}>
         </div>
 
-        {/* Gallery of other works */}
-        <Gallery />
+        <Navbar />
 
-        {/* Tech Stack */}
-        <Inventory />
+        <main className="relative z-10 flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/resume" element={<ResumePage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+          </Routes>
+        </main>
 
-        {/* Timeline */}
-        <QuestLog />
-      </main>
-
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

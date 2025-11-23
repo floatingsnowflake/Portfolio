@@ -13,11 +13,21 @@ import {
 } from 'lucide-react';
 import { ProjectShowcaseData, GalleryItem } from './types';
 
+// =========================================================================
+// ASSETS CONFIGURATION
+// Please ensure you create a folder named 'assets' in your public root
+// and structure it as follows:
+// /assets/images/avatar.png
+// /assets/videos/life-shell-pv.mp4
+// /assets/images/ls-screen-1.jpg  etc.
+// =========================================================================
+
 export const HERO_DATA = {
   title: "高级 Unity 2D 工程师",
   subtitle: "UI/UX 交互专家 | 系统架构 | 性能优化",
   summary: "拥有丰富的2D游戏制作经验与问题解决能力。在闲鱼平台解决过3800+ Unity疑难杂症，好评率100%。擅长构建高可维护性的游戏系统、复杂的UI交互逻辑及高性能代码优化。",
-  tags: ["Unity 2D/3D", "C#", "UI架构", "性能优化", "设计模式"]
+  tags: ["Unity 2D/3D", "C#", "UI架构", "性能优化", "设计模式"],
+  avatarUrl: "/assets/images/avatar.png" // Replace with your actual avatar
 };
 
 export const STATS_DATA = [
@@ -91,13 +101,13 @@ export const PROJECT_SHOWCASE: ProjectShowcaseData = {
   description: "担任项目总程序，编写超过8万行代码。负责从底层架构到上层玩法的全方位实现。核心包括复杂的连击战斗系统（状态机驱动）、高性能存档方案（MemoryPack）以及高度模块化的任务与对话系统。",
   steamLink: "https://store.steampowered.com/app/3007510/_/",
   tags: ["Unity 3D", "Combat RPG", "System Architecture", "Spine"],
-  // NOTE: This is a placeholder video. Replace with your actual Gameplay PV (YouTube Embed or direct MP4)
-  videoUrl: "https://www.youtube.com/embed/fTSL7Kq5CqM?si=Gz0kO_J0yJ0g9y0_", 
+  // Point to local video file in /assets/videos/
+  videoUrl: "/assets/videos/life-shell-pv.mp4", 
   images: [
-    "https://picsum.photos/seed/game1/800/450", 
-    "https://picsum.photos/seed/game2/800/450",
-    "https://picsum.photos/seed/game3/800/450",
-    "https://picsum.photos/seed/game4/800/450",
+    "/assets/images/ls-cover.jpg", 
+    "/assets/images/ls-screen-1.jpg",
+    "/assets/images/ls-screen-2.jpg",
+    "/assets/images/ls-screen-3.jpg",
   ],
   stats: [
     { label: "Code Lines", value: "80k+" },
@@ -107,12 +117,12 @@ export const PROJECT_SHOWCASE: ProjectShowcaseData = {
 };
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 1, type: 'image', title: 'Unity 2D 动画状态机', category: 'Animation', url: 'https://picsum.photos/seed/anim/600/400' },
-  { id: 2, type: 'image', title: 'RPG 背包系统 UI', category: 'UI/UX', url: 'https://picsum.photos/seed/inv/600/400' },
-  { id: 3, type: 'image', title: '数据图表可视化', category: 'Tools', url: 'https://picsum.photos/seed/chart/600/400' },
-  { id: 4, type: 'image', title: '3D 平台跳跃原型', category: 'Prototype', url: 'https://picsum.photos/seed/jump/600/400' },
-  { id: 5, type: 'image', title: '对话编辑器扩展', category: 'Editor', url: 'https://picsum.photos/seed/editor/600/400' },
-  { id: 6, type: 'image', title: '横版动作打击感测试', category: 'Combat', url: 'https://picsum.photos/seed/fight/600/400' },
+  { id: 1, type: 'image', title: 'Unity 2D 动画状态机', category: 'Animation', url: '/assets/images/gallery-1.jpg' },
+  { id: 2, type: 'image', title: 'RPG 背包系统 UI', category: 'UI/UX', url: '/assets/images/gallery-2.jpg' },
+  { id: 3, type: 'image', title: '数据图表可视化', category: 'Tools', url: '/assets/images/gallery-3.jpg' },
+  { id: 4, type: 'image', title: '3D 平台跳跃原型', category: 'Prototype', url: '/assets/images/gallery-4.jpg' },
+  { id: 5, type: 'image', title: '对话编辑器扩展', category: 'Editor', url: '/assets/images/gallery-5.jpg' },
+  { id: 6, type: 'image', title: '横版动作打击感测试', category: 'Combat', url: '/assets/images/gallery-6.jpg' },
 ];
 
 export const PERSONAL_INTERESTS = [

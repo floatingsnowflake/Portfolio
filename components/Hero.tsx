@@ -10,10 +10,27 @@ const Hero: React.FC = () => {
       
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-          {/* Avatar / Icon Placeholder */}
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-game-accent to-game-secondary p-[2px] shadow-[0_0_30px_rgba(6,182,212,0.3)]">
-            <div className="w-full h-full bg-game-dark rounded-2xl flex items-center justify-center">
-               <Terminal size={64} className="text-slate-200" />
+          {/* Avatar Slot */}
+          <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-game-accent to-game-secondary p-[2px] shadow-[0_0_30px_rgba(6,182,212,0.3)] shrink-0">
+            <div className="w-full h-full bg-game-dark rounded-2xl overflow-hidden flex items-center justify-center relative group">
+               {/* If avatarUrl is present, show image, else show icon */}
+               {HERO_DATA.avatarUrl ? (
+                 <img 
+                   src={HERO_DATA.avatarUrl} 
+                   alt="Avatar" 
+                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                   onError={(e) => {
+                     // Fallback if image fails
+                     e.currentTarget.style.display = 'none';
+                     e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center');
+                     const icon = document.createElement('div');
+                     icon.innerHTML = '<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-200"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>';
+                     e.currentTarget.parentElement?.appendChild(icon);
+                   }}
+                 />
+               ) : (
+                 <Terminal size={64} className="text-slate-200" />
+               )}
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code, Layout, Database, Cpu, PlayCircle, Image as ImageIcon, ExternalLink, Terminal } from 'lucide-react';
+import { Code, Layout, Database, Cpu, PlayCircle, ExternalLink, Terminal } from 'lucide-react';
 import { PROJECT_SHOWCASE } from '../constants';
 
 const ProjectDeepDive: React.FC = () => {
@@ -10,14 +10,12 @@ const ProjectDeepDive: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-slate-900/80 py-24 border-y border-slate-800 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+    <section className="w-full bg-slate-900/80 py-12 relative overflow-hidden rounded-xl border border-slate-800">
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 border-b border-slate-700/50 pb-6">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 border-b border-slate-700/50 pb-6">
             <div>
                 <div className="flex items-center gap-3 mb-2">
                     <span className="px-2 py-0.5 text-xs font-mono text-game-accent border border-game-accent/30 bg-game-accent/10 rounded">
@@ -25,7 +23,7 @@ const ProjectDeepDive: React.FC = () => {
                     </span>
                     <span className="text-slate-500 text-xs font-mono">ID: {PROJECT_SHOWCASE.id.toUpperCase()}</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
+                <h2 className="text-4xl font-black text-white tracking-tighter uppercase">
                     {PROJECT_SHOWCASE.title}
                 </h2>
                 <p className="text-xl text-game-secondary font-mono mt-2">{PROJECT_SHOWCASE.subtitle}</p>
@@ -42,7 +40,7 @@ const ProjectDeepDive: React.FC = () => {
             </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
             {/* Left Col: Media Command Center (8 cols) */}
             <div className="lg:col-span-8 space-y-4">
@@ -50,16 +48,16 @@ const ProjectDeepDive: React.FC = () => {
                 <div className="aspect-video w-full bg-black rounded-xl overflow-hidden border border-slate-700 shadow-2xl relative group">
                     <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
                         {activeMedia === 'video' ? (
-                            <iframe 
+                            <video 
                                 width="100%" 
                                 height="100%" 
-                                src={PROJECT_SHOWCASE.videoUrl} 
-                                title="Project PV" 
-                                frameBorder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowFullScreen
-                                className="z-10"
-                            ></iframe>
+                                controls
+                                poster={PROJECT_SHOWCASE.images[0]} // Use first image as poster
+                                className="z-10 w-full h-full object-contain"
+                            >
+                              <source src={PROJECT_SHOWCASE.videoUrl} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
                         ) : (
                             <img 
                                 src={PROJECT_SHOWCASE.images[activeMedia as number]} 
@@ -69,8 +67,8 @@ const ProjectDeepDive: React.FC = () => {
                         )}
                     </div>
                     
-                    {/* CRT Overlay Effect */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 pointer-events-none bg-[length:100%_4px,6px_100%]"></div>
+                    {/* CRT Overlay Effect - Only visual decoration */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 pointer-events-none bg-[length:100%_4px,6px_100%] opacity-50"></div>
                 </div>
 
                 {/* Media Selector (Thumbnails) */}
