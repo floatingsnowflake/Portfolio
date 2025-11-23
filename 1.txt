@@ -1,0 +1,10 @@
+/assets
+  /images
+    avatar.png          (头像)
+    ls-cover.jpg        (命骸封面图/截图1)
+    ls-screen-1.jpg     (截图2)
+    ls-screen-2.jpg     (截图3)
+    ls-screen-3.jpg     (截图4)
+    gallery-1.jpg       (画廊图片...)
+  /videos
+    life-shell-pv.mp4   (命骸PV视频)
